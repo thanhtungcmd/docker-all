@@ -78,6 +78,17 @@ services:
     - "1521:1521"
     - "8080:8080"
 
+  # Weblogic
+  weblogic:
+    image: "container-registry.oracle.com/middleware/weblogic:12.2.1.3"
+    environment:
+      - ADMINISTRATION_PORT_ENABLED=false
+    volumes:
+      - /Users/macbook/Data/edupia/docker/weblogic/properties:/u01/oracle/properties
+    ports:
+    - "7001:7001"
+    - "9002:9002"
+
   # Redis
 #  redis:
 #    build: ./docker/redis
