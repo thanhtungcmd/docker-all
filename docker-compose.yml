@@ -56,15 +56,36 @@ services:
   #    - "3306:3306"
 
   # PostgreSql
-  postgresql:
-    build: ./docker/postgresql
-    environment:
-      - POSTGRES_USER=homestead
-      - POSTGRES_PASSWORD=secret
-    volumes:
-      - /Users/macbook/Data/edupia/docker/postgresql/db:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+  # postgresql:
+  #   build: ./docker/postgresql
+  #   environment:
+  #     - POSTGRES_USER=homestead
+  #     - POSTGRES_PASSWORD=secret
+  #   volumes:
+  #     - /Users/macbook/Data/edupia/docker/postgresql/db:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+
+  # ElasticSearch
+  # elasticsearch:
+  #   build: ./docker/elasticsearch
+  #   environment:
+  #     - discovery.type=single-node
+  #     - http.port=9200
+  #     - http.cors.enabled=true
+  #     - http.cors.allow-origin=http://localhost:1358,http://127.0.0.1:1358
+  #     - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
+  #     - http.cors.allow-credentials=true
+  #   volumes:
+  #     - /Users/macbook/Data/edupia/docker/elasticsearch/db:/usr/share/elasticsearch/data
+  #   ports:
+  #     - 9200:9200
+
+  # # Elasticsearch Gui
+  # elasticsearchgui:
+  #   image: appbaseio/dejavu
+  #   ports:
+  #     - 1358:1358
 
   # Mongodb
   # mongodb:
