@@ -62,7 +62,7 @@ services:
       - POSTGRES_USER=homestead
       - POSTGRES_PASSWORD=secret
     volumes:
-      - /Users/macbook/Data/edupia/docker/mongodb/db:/var/lib/postgresql/data
+      - /Users/macbook/Data/edupia/docker/postgresql/db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
