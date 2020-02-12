@@ -1,94 +1,105 @@
 version: "3"
 services:
   # Web
-  nginx:
-    build: ./docker/nginx
-    volumes:
-    - ./app:/var/www
-    ports:
-#      - "8080:80"
-#      - "8081:81"
-#      - "8082:82"
-#      - "8083:83"
-      - "8084:84"
-#      - "8085:85"
-#      - "8087:87"
-#    depends_on:
-#      - php
+  # nginx:
+  #   build: ./docker/nginx
+  #   volumes:
+  #   - ./app:/var/www
+  #   ports:
+  #     - "8080:80"
+  #     - "8081:81"
+  #     - "8082:82"
+  #     - "8083:83"
+  #     - "8084:84"
+  #     - "8085:85"
+  #     - "8087:87"
+  #   depends_on:
+  #     - php
 
   # PHP 5.6 version
-#  php56:
-#    build: ./docker/php56
-#    volumes:
-#      - ./app:/var/www
-#    depends_on:
-#      - mysql
-#      - redis
+  # php56:
+  #  build: ./docker/php56
+  #  volumes:
+  #    - ./app:/var/www
+  #  depends_on:
+  #    - mysql
+  #    - redis
 
-  #PHP service
-  php:
-    build: ./docker/php
-    volumes:
-      - ./app:/var/www
+  # PHP service
+  # php:
+  #   build: ./docker/php
+  #   volumes:
+  #     - ./app:/var/www
 
   # Node service
-#  node:
-#    build: ./docker/node
-#    volumes:
-#      - ./app/WebhookCustomerLabs:/home/node/app
-#    ports:
-#      - "8086:4082"
-#    depends_on:
-#      - mongodb
-#      - redis
+  # node:
+  #  build: ./docker/node
+  #  volumes:
+  #    - ./app/WebhookCustomerLabs:/home/node/app
+  #  ports:
+  #    - "8086:4082"
+  #  depends_on:
+  #    - mongodb
+  #    - redis
 
   # MySql
-  mysql:
-   build: ./docker/mysql
-   environment:
-     - MYSQL_USER=homestead
-     - MYSQL_PASSWORD=secret
-     - MYSQL_ROOT_PASSWORD=secret
-     - MYSQL_ROOT_HOST=%
-   volumes:
-     - ./docker/mysql/data:/var/lib/mysql
-   ports:
-     - "3306:3306"
+  # mysql:
+  #  build: ./docker/mysql
+  #  environment:
+  #    - MYSQL_USER=homestead
+  #    - MYSQL_PASSWORD=secret
+  #    - MYSQL_ROOT_PASSWORD=secret
+  #    - MYSQL_ROOT_HOST=%
+  #  volumes:
+  #    - ./docker/mysql/data:/var/lib/mysql
+  #  ports:
+  #    - "3306:3306"
+
+  # PostgreSql
+  postgresql:
+    build: ./docker/postgresql
+    environment:
+      - POSTGRES_USER=homestead
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - /Users/macbook/Data/edupia/docker/mongodb/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
   # Mongodb
-  mongodb:
-   build: ./docker/mongodb
-   volumes:
-     - /Users/macbook/Data/edupia/docker/mongodb/db:/data/db
-   ports:
-     - "27017:27017"
+  # mongodb:
+  #  build: ./docker/mongodb
+  #  volumes:
+  #    - /Users/macbook/Data/edupia/docker/mongodb/db:/data/db
+  #  ports:
+  #    - "27017:27017"
 
   # Tomcat
-  tomcat:
-    build: ./docker/tomcat
-    ports:
-     - "8888:8080"
+  # tomcat:
+  #   build: ./docker/tomcat
+  #   ports:
+  #    - "8888:8080"
 
   # Oracle DB
-  oracledb:
-    build: ./docker/oracledb
-    volumes:
-      - /Users/macbook/Data/edupia/docker/oracledb/db:/u01/app/oracle
-    ports:
-    - "1521:1521"
-    - "8080:8080"
+  # oracledb:
+  #   build: ./docker/oracledb
+  #   volumes:
+  #     - /Users/macbook/Data/edupia/docker/oracledb/db:/u01/app/oracle
+  #   ports:
+  #   - "1521:1521"
+  #   - "8080:8080"
 
   # Weblogic
-  weblogic:
-    image: "container-registry.oracle.com/middleware/weblogic:12.2.1.3"
-    environment:
-      - ADMINISTRATION_PORT_ENABLED=false
-    volumes:
-      - /Users/macbook/Data/edupia/docker/weblogic/properties:/u01/oracle/properties
-    ports:
-    - "7001:7001"
-    - "9002:9002"
+  # weblogic:
+  #   image: "container-registry.oracle.com/middleware/weblogic:12.2.1.3"
+  #   environment:
+  #     - ADMINISTRATION_PORT_ENABLED=false
+  #   volumes:
+  #     - /Users/macbook/Data/edupia/docker/weblogic/properties:/u01/oracle/properties
+  #   ports:
+  #   - "7001:7001"
+  #   - "9002:9002"
 
   # Redis
-#  redis:
-#    build: ./docker/redis
+  # redis:
+  #   build: ./docker/redis
