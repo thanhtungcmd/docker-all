@@ -62,7 +62,7 @@ services:
   #     - POSTGRES_USER=homestead
   #     - POSTGRES_PASSWORD=secret
   #   volumes:
-  #     - /Users/macbook/Data/edupia/docker/postgresql/db:/var/lib/postgresql/data
+  #     - /Users/macbook/Data/docker/docker/postgresql/db:/var/lib/postgresql/data
   #   ports:
   #     - "5432:5432"
 
@@ -77,7 +77,7 @@ services:
   #     - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
   #     - http.cors.allow-credentials=true
   #   volumes:
-  #     - /Users/macbook/Data/edupia/docker/elasticsearch/db:/usr/share/elasticsearch/data
+  #     - /Users/macbook/Data/docker/docker/elasticsearch/db:/usr/share/elasticsearch/data
   #   ports:
   #     - 9200:9200
 
@@ -91,7 +91,7 @@ services:
   # mongodb:
   #  build: ./docker/mongodb
   #  volumes:
-  #    - /Users/macbook/Data/edupia/docker/mongodb/db:/data/db
+  #    - /Users/macbook/Data/docker/docker/mongodb/db:/data/db
   #  ports:
   #    - "27017:27017"
 
@@ -105,7 +105,7 @@ services:
   # oracledb:
   #   build: ./docker/oracledb
   #   volumes:
-  #     - /Users/macbook/Data/edupia/docker/oracledb/db:/u01/app/oracle
+  #     - /Users/macbook/Data/docker/docker/oracledb/db:/u01/app/oracle
   #   ports:
   #   - "1521:1521"
   #   - "8080:8080"
@@ -116,7 +116,7 @@ services:
   #   environment:
   #     - ADMINISTRATION_PORT_ENABLED=false
   #   volumes:
-  #     - /Users/macbook/Data/edupia/docker/weblogic/properties:/u01/oracle/properties
+  #     - /Users/macbook/Data/docker/docker/weblogic/properties:/u01/oracle/properties
   #   ports:
   #   - "7001:7001"
   #   - "9002:9002"
@@ -124,3 +124,21 @@ services:
   # Redis
   # redis:
   #   build: ./docker/redis
+
+  # Prometheus
+  prometheus:
+    build: ./docker/prometheus
+    volumes:
+      - /Users/macbook/Data/docker/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  # Grafana
+  grafana:
+    build: ./docker/grafana
+    environment:
+      - GF_AUTH_BASIC_ENABLED=false
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    ports:
+      - "3000:3000"

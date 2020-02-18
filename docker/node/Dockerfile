@@ -1,4 +1,4 @@
-FROM node:9.11
+FROM node:12.16
 
 RUN npm install nodemon -g
 
