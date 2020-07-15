@@ -96,10 +96,10 @@ services:
   #    - "27017:27017"
 
   # Tomcat
-  # tomcat:
-  #   build: ./docker/tomcat
-  #   ports:
-  #    - "8888:8080"
+  tomcat:
+    build: ./docker/tomcat
+    ports:
+     - "8888:8080"
 
   # Oracle DB
   # oracledb:
@@ -126,19 +126,19 @@ services:
   #   build: ./docker/redis
 
   # Prometheus
-  prometheus:
-    build: ./docker/prometheus
-    volumes:
-      - /Users/macbook/Data/docker/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
+  # prometheus:
+  #   build: ./docker/prometheus
+  #   volumes:
+  #     - /Users/macbook/Data/docker/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  #   ports:
+  #     - "9090:9090"
 
   # Grafana
-  grafana:
-    build: ./docker/grafana
-    environment:
-      - GF_AUTH_BASIC_ENABLED=false
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
-    ports:
-      - "3000:3000"
+  # grafana:
+  #   build: ./docker/grafana
+  #   environment:
+  #     - GF_AUTH_BASIC_ENABLED=false
+  #     - GF_AUTH_ANONYMOUS_ENABLED=true
+  #     - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+  #   ports:
+  #     - "3000:3000"
